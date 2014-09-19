@@ -12,8 +12,8 @@ cdef class Harminv:
     cdef readonly int nf
     cdef charminv.data data
 
-    def __init__(self, n, signal, fmin, fmax, nf):
-        self.n = n
+    def __init__(self, signal, fmin, fmax, nf):
+        self.n = signal.size
         self.signal = signal
         self.fmin = fmin
         self.fmax = fmax

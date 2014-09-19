@@ -7,7 +7,7 @@ print dir(harminv)
 time = np.arange(1000)
 signal = np.cos(time) + np.cos(3*time)
 
-harm = harminv.Harminv(n=signal.size, signal=signal, fmin=0.01, fmax=100, nf=3)
+harm = harminv.Harminv(signal=signal, fmin=0.01, fmax=100, nf=3)
 
 print dir(harm)
 print harm.n
