@@ -9,20 +9,20 @@ cdef extern from "harminv.h":
     ctypedef struct harminv_data:
         pass
 
-    cdef harminv_data harminv_data_create(int n, double complex *signal,
-                                          double fmin, double fmax, int nf)
+    harminv_data harminv_data_create(int n, double complex *signal,
+                                     double fmin, double fmax, int nf)
 
-    cdef void harminv_solve(harminv_data d)
-    cdef int harminv_get_num_freqs(harminv_data d)
+    void harminv_solve(harminv_data d)
+    int harminv_get_num_freqs(harminv_data d)
 
-    cdef double harminv_get_freq(harminv_data d, int k)
-    cdef double harminv_get_Q(harminv_data d, int k)
-    cdef double harminv_get_decay(harminv_data d, int k)
+    double harminv_get_freq(harminv_data d, int k)
+    double harminv_get_Q(harminv_data d, int k)
+    double harminv_get_decay(harminv_data d, int k)
 
-    cdef double complex harminv_get_omega(harminv_data d, int k)
-    cdef double complex harminv_get_amplitude(harminv_data d, int k)
+    double complex harminv_get_omega(harminv_data d, int k)
+    double complex harminv_get_amplitude(harminv_data d, int k)
 
-    cdef double harminv_get_freq_error(harminv_data d, int k)
+    double harminv_get_freq_error(harminv_data d, int k)
 
 
 cdef class Harminv:
