@@ -1,6 +1,9 @@
 from distutils.core import setup
+from distutils.extension import Extension
 from Cython.Build import cythonize
 
 setup(
-    ext_modules=cythonize("harminv.pyx")
+    ext_modules=cythonize([Extension('harminv',
+                                     ["harminv.pyx"],
+                                     libraries=['harminv'])])
 )
