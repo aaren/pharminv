@@ -17,6 +17,7 @@ cdef class Harminv:
         self.signal = signal
         self.fmin = fmin
         self.fmax = fmax
+        # TODO: set a default value for nf
         self.nf = nf
 
         self.data = self.create_data()
