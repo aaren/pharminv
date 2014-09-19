@@ -20,3 +20,11 @@ print harm.get_num_freqs()
 print harm.get_freq(0)
 print harm.get_freq(1)
 print harm.get_freq(2)
+
+print harm.get_freq_error(0)
+print harm.get_freq_error(1)
+print harm.get_freq_error(2)
+
+print harm.get_amplitude(0)
+print harm.get_amplitude(1)
+print harm.get_amplitude(2)
