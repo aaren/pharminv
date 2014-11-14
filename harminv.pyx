@@ -12,6 +12,8 @@ cdef class Harminv:
     cdef readonly int nf
     cdef charminv.data data
 
+    cdef public double [:] freq
+
     def __init__(self, signal, fmin, fmax, nf):
         self.n = signal.size
         self.signal = signal
@@ -49,3 +51,21 @@ cdef class Harminv:
 
     cpdef double get_freq_error(self, int k):
         return charminv.get_freq_error(self.data, k)
+
+    cpdef extract(self, thing, dtype):
+        nf = self.get_num_freqs()
+        array = np.empty((nf,), dtype)
+
+        for i in range(nf):
+            array[i] = getattr(self, 'get_' + thing)(i)
+
+        return array
+
+    cpdef set(self):
+        self.freq = self.extract('freq', np.double)
+
+    # cpdef np.ndarray freq(self):
+        # nf = self.get_num_freqs()
+        # # # for each nf, extract the properties and set as attributes
+        # return np.fromiter((self.get_freq(i) for i in range(nf)),
+                           # dtype=np.double)
