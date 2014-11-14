@@ -4,6 +4,8 @@ pharminv
 This is a python interface to [harminv], a library for performing
 harmonic inversion on a signal.
 
+[harminv]: http://ab-initio.mit.edu/wiki/index.php/Harminv
+
 Requirements:
 
 - BLAS & LAPACK
