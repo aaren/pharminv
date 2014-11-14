@@ -12,6 +12,14 @@ Requirements:
 - harminv
 - cython, numpy
 
+Installation:
+
+Make sure that you have the requirements above, then
+
+```
+python setup.py install
+```
+
 Usage:
 
 ```python
