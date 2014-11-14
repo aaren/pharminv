@@ -6,13 +6,13 @@ harmonic inversion on a signal.
 
 [harminv]: http://ab-initio.mit.edu/wiki/index.php/Harminv
 
-Requirements:
+### Requirements:
 
 - BLAS & LAPACK
 - harminv
 - cython, numpy
 
-Installation:
+### Installation:
 
 Make sure that you have the requirements above, then
 
@@ -20,7 +20,7 @@ Make sure that you have the requirements above, then
 python setup.py install
 ```
 
-Usage:
+### Usage:
 
 ```python
 import numpy as np
