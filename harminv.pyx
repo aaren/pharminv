@@ -17,7 +17,8 @@ cdef class Harminv:
     cdef public np.ndarray decay
     cdef public np.ndarray omega
     cdef public np.ndarray amplitude
-    cdef public np.ndarray freq_error
+    cdef public np.ndarray phase
+    cdef public np.ndarray error
 
     def __init__(self, signal, fmin, fmax, nf):
         """Perform Harmonic Inversion on the given signal.
