@@ -9,7 +9,7 @@ harmonic inversion on a signal.
 ### Requirements:
 
 - BLAS & LAPACK
-- harminv
+- libharminv-dev
 - cython, numpy
 
 ### Installation:
@@ -17,7 +17,7 @@ harmonic inversion on a signal.
 Make sure that you have the requirements above, then
 
 ```
-python setup.py install
+pip install harminv
 ```
 
 ### Usage:
@@ -26,14 +26,15 @@ python setup.py install
 import numpy as np
 import harminv
 
-time = np.arange(1000)
-signal = np.cos(time) + np.cos(3*time)
+time = np.linspace(0, 1, 1000)
 
-harm = harminv.Harminv(signal=signal, fmin=0.01, fmax=100, nf=100)
+signal = np.cos(2 * np.pi * time * 10) + np.cos(2 * np.pi * time * 20)
 
-harm.freq        # mode frequencies
-harm.decay       # decay rates
-harm.Q           # Q factor
-harm.amplitudes  # absolute amplitudes
-harm.phase       # phase shift 
+inversion = harminv.invert(signal, fmin=1, fmax=100)
+
+inversion.freq        # mode frequencies
+inversion.decay       # decay rates
+inversion.Q           # Q factor
+inversion.amplitudes  # absolute amplitudes
+inversion.phase       # phase shift 
 ```
