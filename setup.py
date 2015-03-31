@@ -1,13 +1,28 @@
-from setuptools import setup
-from setuptools import Extension
+import subprocess
+
+from setuptools import setup, Extension
+
 from Cython.Build import cythonize
+
+try:
+    pandoc = subprocess.Popen(['pandoc', 'README.md', '--to', 'rst'],
+                              stdout=subprocess.PIPE)
+    readme = pandoc.communicate()[0]
+
+except OSError:
+    with open('README.md') as f:
+        readme = f.read()
 
 setup(
     name='harminv',
-    version='0.1',
+    version='0.2',
     description='Python interface to harminv',
+    long_description=readme,
     packages=['harminv'],
     author="Aaron O'Leary",
+    author_email='dev@aaren.me',
+    license='GPLv3',
+    url='http://github.com/aaren/harminv',
     install_requires=['numpy', 'cython'],
     ext_modules=cythonize([Extension('harminv._harminv',
                                      ["harminv/_harminv.pyx"],
