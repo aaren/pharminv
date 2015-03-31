@@ -21,8 +21,17 @@ cdef class Harminv:
     cdef public np.ndarray phase
     cdef public np.ndarray error
 
-    def __init__(self, signal, fmin, fmax, nf, dt=1.0):
+    def __init__(self, signal, fmin, fmax, dt=1.0, nf=100):
         """Perform Harmonic Inversion on the given signal.
+
+        Arguments:
+
+            signal - array, the input signal (can be complex)
+            fmin - float, the lower bound on the frequency search
+            fmax - float, the upper bound on the frequency search
+            dt - float, the sampling interval (default 1)
+            nf - int, the number of basis functions to search over
+                 (default 100)
 
         Assuming that the signal is comprised of a sum of sinusoids
         (i.e.  modes), extract their frequencies, amplitudes and
@@ -46,7 +55,6 @@ cdef class Harminv:
         self.signal = signal.astype(np.complex128)
         self.fmin = fmin
         self.fmax = fmax
-        # TODO: set a default value for nf
         self.nf = nf
         self.dt = dt
 
