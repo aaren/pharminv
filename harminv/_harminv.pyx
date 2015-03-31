@@ -96,15 +96,20 @@ cdef class Harminv:
         return array
 
     cpdef extract_all(self):
-        """Extract all of the outputs from the Harminv data object."""
-        self.freq = self.extract('freq', np.double) / self.dt
-        self.omega = self.extract('omega', np.complex)
+        """Extract all of the outputs from the Harminv data object,
+        sorting by frequency.
+        """
+        freq = self.extract('freq', np.double) / self.dt
+        sort = np.argsort(freq)
+        self.freq = freq[sort]
 
-        self.decay = self.extract('decay', np.double) / self.dt
-        self.Q = self.extract('Q', np.double)
+        self.omega = self.extract('omega', np.complex)[sort]
 
-        amplitude = self.extract('amplitude', np.complex)
+        self.decay = self.extract('decay', np.double)[sort] / self.dt
+        self.Q = self.extract('Q', np.double)[sort]
+
+        amplitude = self.extract('amplitude', np.complex)[sort]
         self.amplitude = np.abs(amplitude)
         self.phase = np.angle(amplitude)
 
-        self.error = self.extract('freq_error', np.double)
+        self.error = self.extract('freq_error', np.double)[sort]
