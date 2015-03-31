@@ -22,6 +22,10 @@ pip install harminv
 
 ### Usage:
 
+`harminv.invert` contains the basic functionality of the harminv
+tool. This function should remain stable but the API elsewhere is
+subject to change.
+
 ```python
 import numpy as np
 import harminv
