@@ -10,6 +10,7 @@ cdef class Harminv:
     cdef readonly double fmin
     cdef readonly double fmax
     cdef readonly int nf
+    cdef readonly double dt
     cdef charminv.data data
 
     cdef public np.ndarray freq
@@ -20,7 +21,7 @@ cdef class Harminv:
     cdef public np.ndarray phase
     cdef public np.ndarray error
 
-    def __init__(self, signal, fmin, fmax, nf):
+    def __init__(self, signal, fmin, fmax, nf, dt=1.0):
         """Perform Harmonic Inversion on the given signal.
 
         Assuming that the signal is comprised of a sum of sinusoids
@@ -47,14 +48,18 @@ cdef class Harminv:
         self.fmax = fmax
         # TODO: set a default value for nf
         self.nf = nf
+        self.dt = dt
 
         self.data = self.create_data()
         self.solve()
         self.extract_all()
 
     cdef charminv.data create_data(self):
-        return charminv.data_create(self.n, <double complex *> self.signal.data,
-                                    self.fmin, self.fmax, self.nf)
+        return charminv.data_create(self.n,
+                                    <double complex *> self.signal.data,
+                                    self.dt * self.fmin,
+                                    self.dt * self.fmax,
+                                    self.nf)
 
     cpdef solve(self):
         charminv.solve(self.data)
@@ -92,10 +97,10 @@ cdef class Harminv:
 
     cpdef extract_all(self):
         """Extract all of the outputs from the Harminv data object."""
-        self.freq = self.extract('freq', np.double)
+        self.freq = self.extract('freq', np.double) / self.dt
         self.omega = self.extract('omega', np.complex)
 
-        self.decay = self.extract('decay', np.double)
+        self.decay = self.extract('decay', np.double) / self.dt
         self.Q = self.extract('Q', np.double)
 
         amplitude = self.extract('amplitude', np.complex)
