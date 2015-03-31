@@ -1,1 +1,1 @@
-from harminv import Harminv
+from harminv import Harminv, invert

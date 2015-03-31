@@ -24,3 +24,48 @@ class Harminv(_harminv.Harminv):
               & (np.abs(self.Q) > self.threshold['Q']))
 
         return ok
+
+
+def invert(signal, fmin, fmax, dt=1, nf=100):
+    """Compute the *Harmonic Inversion* of the given signal.
+
+    Returns a numpy recarray, with the results of the inversion
+    available as attributes.
+
+    Usage:
+
+    import harminv
+
+    tau = 2 * np.pi
+    time = np.linspace(0, 1, 1000)
+    signal = np.cos(12 * tau * time) + np.cos(5 * tau * time)
+
+    inversion = harminv.invert(signal, fmin=2, fmax=100, dt=0.001)
+
+    # access the frequencies
+    inversion.frequency
+
+    # access the amplitudes
+    inversion.amplitudes
+
+    # reconstruct the signal
+    components = (inversion.amplitude
+                    * np.exp(-1j * (2 * np.pi
+                                    * inversion.frequency
+                                    * time[:, None] - inversion.phase)
+                                    - inversion.decay * time[:, None]))
+
+    reconstruction = components.sum(axis=1)
+    """
+    harm = Harminv(signal, fmin=fmin, fmax=fmax, dt=dt, nf=nf)
+
+    array_names = [(harm.freq,      'frequency'),
+                   (harm.amplitude, 'amplitude'),
+                   (harm.phase,     'phase'),
+                   (harm.decay,     'decay'),
+                   (harm.Q,         'Q'),
+                   (harm.error,     'error')]
+
+    arrays, names = zip(*array_names)
+
+    return np.rec.fromarrays(arrays, names=names)
