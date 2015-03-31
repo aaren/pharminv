@@ -86,7 +86,7 @@ cdef class Harminv:
         return charminv.get_freq_error(self.data, k)
 
     cpdef extract(self, thing, dtype):
-        """Extract a single output from the harminv data 
+        """Extract a single output from the harminv data
         object. Returns an array with the given dtype.
         """
         nf = self.get_num_freqs()
