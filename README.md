@@ -40,7 +40,7 @@ inversion.freq        # mode frequencies
 inversion.decay       # decay rates
 inversion.Q           # Q factor
 inversion.amplitudes  # absolute amplitudes
-inversion.phase       # phase shift 
+inversion.phase       # phase shift
 ```
 
 ### License:
