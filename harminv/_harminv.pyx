@@ -22,7 +22,8 @@ cdef class Harminv:
     cdef public np.ndarray error
 
     def __init__(self, signal, fmin, fmax, dt=1.0, nf=100):
-        """Perform Harmonic Inversion on the given signal.
+        """Perform Harmonic Inversion on the given signal over a given
+        frequency range.
 
         Arguments:
 
@@ -37,7 +38,7 @@ cdef class Harminv:
         (i.e.  modes), extract their frequencies, amplitudes and
         decay rates (for exponentially decaying sinusoids).
 
-        Sets these attributes:
+        Attributes:
 
             freq - the mode frequencies
             decay - the exponential decay constants
