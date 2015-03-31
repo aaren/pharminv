@@ -43,7 +43,7 @@ cdef class Harminv:
             amplitude * exp[-i * (2 pi freq t - phase) - decay t]
         """
         self.n = signal.size
-        self.signal = signal
+        self.signal = signal.astype(np.complex128)
         self.fmin = fmin
         self.fmax = fmax
         # TODO: set a default value for nf
