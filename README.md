@@ -42,3 +42,11 @@ inversion.Q           # Q factor
 inversion.amplitudes  # absolute amplitudes
 inversion.phase       # phase shift 
 ```
+
+### License:
+
+[harminv] was written by Steven G. Johnson and is licensed under the
+GNU GPLv2+, copyright 2005 by the Massachusetts Institute of Technology.
+
+This python interface to harminv is licensed under the standard BSD
+3-clause license.
