@@ -10,7 +10,7 @@ harmonic inversion on a signal.
 
 - BLAS & LAPACK
 - libharminv-dev
-- cython, numpy
+- numpy
 
 ### Installation:
 

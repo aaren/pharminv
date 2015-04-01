@@ -2,8 +2,6 @@ import subprocess
 
 from setuptools import setup, Extension
 
-from Cython.Build import cythonize
-
 try:
     pandoc = subprocess.Popen(['pandoc', 'README.md', '--to', 'rst'],
                               stdout=subprocess.PIPE)
@@ -13,9 +11,24 @@ except OSError:
     with open('README.md') as f:
         readme = f.read()
 
+try:
+    from Cython.Build import cythonize
+    USE_CYTHON = True
+except ImportError:
+    USE_CYTHON = False
+
+ext = '.pyx' if USE_CYTHON else '.c'
+
+extensions = [Extension('harminv.charminv',
+                        ["harminv/charminv" + ext],
+                        libraries=['harminv'])]
+
+if USE_CYTHON:
+    extensions = cythonize(extensions)
+
 setup(
     name='pharminv',
-    version="0.2.0",
+    version="0.2.1",
     description='Python interface to harminv',
     long_description=readme,
     packages=['harminv'],
@@ -23,8 +36,6 @@ setup(
     author_email='dev@aaren.me',
     license='GPLv3',
     url='http://github.com/aaren/harminv',
-    install_requires=['numpy', 'cython'],
-    ext_modules=cythonize([Extension('harminv.charminv',
-                                     ["harminv/charminv.pyx"],
-                                     libraries=['harminv'])])
+    install_requires=['numpy',],
+    ext_modules=extensions
 )
