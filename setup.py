@@ -14,7 +14,7 @@ except OSError:
         readme = f.read()
 
 setup(
-    name='harminv',
+    name='pharminv',
     version='0.2',
     description='Python interface to harminv',
     long_description=readme,
