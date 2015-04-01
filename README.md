@@ -17,7 +17,7 @@ harmonic inversion on a signal.
 Make sure that you have the requirements above, then
 
 ```
-pip install harminv
+pip install pharminv
 ```
 
 ### Usage:
