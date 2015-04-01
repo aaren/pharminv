@@ -1,4 +1,4 @@
-"""python interface to harminv"""
+"""python interface to lib-harminv"""
 import numpy as np
 cimport numpy as np
 
@@ -105,7 +105,7 @@ cdef class Harminv:
         return array
 
     cpdef extract_all(self):
-        """Extract all of the outputs from the Harminv data object,
+        """Extract all of the outputs from the harminv data object,
         sorting by frequency.
         """
         freq = self.extract('freq', np.double) / self.dt

@@ -24,7 +24,7 @@ setup(
     license='GPLv3',
     url='http://github.com/aaren/harminv',
     install_requires=['numpy', 'cython'],
-    ext_modules=cythonize([Extension('harminv._harminv',
-                                     ["harminv/_harminv.pyx"],
+    ext_modules=cythonize([Extension('harminv.charminv',
+                                     ["harminv/charminv.pyx"],
                                      libraries=['harminv'])])
 )
