@@ -28,11 +28,13 @@ class Harminv(charminv.Harminv):
     @property
     def modes(self):
         t = np.arange(self.signal.size) * self.dt
-        modes = self.amplitude * np.exp(-1j * (2 * np.pi * self.freq
-                                               * t[None].T - self.phase)
-                                        - self.decay * t[None].T)
-        return modes.T
+        return self.compute_modes(t)
 
+    def compute_modes(self, time):
+        modes = self.amplitude * np.exp(-1j * (2 * np.pi * self.freq
+                                               * time[None].T - self.phase)
+                                        - self.decay * time[None].T)
+        return modes.T
 
 def invert(signal, fmin, fmax, dt=1, nf=100):
     """Compute the *Harmonic Inversion* of the given signal.
