@@ -28,7 +28,7 @@ if USE_CYTHON:
 
 setup(
     name='pharminv',
-    version="0.2.1",
+    version="0.2.2",
     description='Python interface to harminv',
     long_description=readme,
     packages=['harminv'],
