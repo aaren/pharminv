@@ -26,7 +26,9 @@ except ImportError:
 
 extensions = [Extension('harminv.charminv',
                         ["harminv/charminv" + ext],
-                        libraries=['harminv'])]
+                        include_dirs=[numpy.get_include()],
+                        libraries=['harminv'],
+                        )]
 
 if USE_CYTHON:
     extensions = cythonize(extensions)
