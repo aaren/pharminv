@@ -19,6 +19,11 @@ except ImportError:
 
 ext = '.pyx' if USE_CYTHON else '.c'
 
+try:
+    import numpy
+except ImportError:
+    exit('Install numpy before installing pharminv.')
+
 extensions = [Extension('harminv.charminv',
                         ["harminv/charminv" + ext],
                         libraries=['harminv'])]
