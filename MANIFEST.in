@@ -1,3 +1,5 @@
 include README.md
 include harminv/charminv.c
+include harminv/charminv.pyx
+include harminv/charminv.pxd
 include harminv/_harminv.h
