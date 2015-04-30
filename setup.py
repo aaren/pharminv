@@ -47,7 +47,6 @@ setup(
     author_email='dev@aaren.me',
     license='GPLv3',
     url='http://github.com/aaren/pharminv',
-    install_requires=['numpy',],
     cmdclass=cmdclass,
     ext_modules=extensions
 )
