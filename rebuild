@@ -1,2 +1,0 @@
-./clean
-CFLAGS="-L$HOME/.local/lib -I$HOME/.local/include" python setup.py build_ext --inplace
