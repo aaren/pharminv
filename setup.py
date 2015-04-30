@@ -11,6 +11,8 @@ except OSError:
     with open('README.md') as f:
         readme = f.read()
 
+cmdclass = {}
+
 try:
     from Cython.Build import cythonize
     USE_CYTHON = True
@@ -32,6 +34,8 @@ extensions = [Extension('harminv.charminv',
 
 if USE_CYTHON:
     extensions = cythonize(extensions)
+    from Cython.Distutils import build_ext
+    cmdclass.update(build_ext=build_ext)
 
 setup(
     name='pharminv',
@@ -44,5 +48,6 @@ setup(
     license='GPLv3',
     url='http://github.com/aaren/harminv',
     install_requires=['numpy',],
+    cmdclass=cmdclass,
     ext_modules=extensions
 )
