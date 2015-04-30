@@ -46,7 +46,7 @@ setup(
     author="Aaron O'Leary",
     author_email='dev@aaren.me',
     license='GPLv3',
-    url='http://github.com/aaren/harminv',
+    url='http://github.com/aaren/pharminv',
     install_requires=['numpy',],
     cmdclass=cmdclass,
     ext_modules=extensions
