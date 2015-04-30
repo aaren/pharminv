@@ -15,7 +15,7 @@ cdef extern from "harminv.h":
     double get_Q "harminv_get_Q" (data d, int k)
     double get_decay "harminv_get_decay" (data d, int k)
 
-    double complex get_omega "harminv_get_omega" (data d, int k)
-    double complex get_amplitude "harminv_get_amplitude" (data d, int k)
+    void get_omega "harminv_get_omega" (double complex *omega, data d, int k)
+    void get_amplitude "harminv_get_amplitude" (double complex *amplitude, data d, int k)
 
     double get_freq_error "harminv_get_freq_error" (data d, int k)

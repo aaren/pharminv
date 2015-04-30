@@ -86,10 +86,14 @@ cdef class Harminv:
         return charminv.get_decay(self.data, k)
 
     cpdef complex get_omega(self, int k):
-        return charminv.get_omega(self.data, k)
+        cdef double complex omega
+        charminv.get_omega(&omega, self.data, k)
+        return omega
 
     cpdef complex get_amplitude(self, int k):
-        return charminv.get_amplitude(self.data, k)
+        cdef double complex amplitude
+        charminv.get_amplitude(&amplitude, self.data, k)
+        return amplitude
 
     cpdef double get_freq_error(self, int k):
         return charminv.get_freq_error(self.data, k)
