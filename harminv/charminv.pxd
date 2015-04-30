@@ -2,6 +2,10 @@ cdef extern from "complex.h":
     pass
 
 cdef extern from "harminv.h":
+    int HARMINV_VERSION_MAJOR
+    int HARMINV_VERSION_MINOR
+    int HARMINV_VERSION_PATCH
+
     ctypedef struct data "harminv_data":
         pass
 
