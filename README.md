@@ -107,3 +107,10 @@ have this in my bashrc:
 ```bash
 export LD_LIBRARY_PATH=$HOME/.local
 ```
+
+Finally, when you install pharminv, you need to tell pip where to
+look for your installation of libharminv:
+
+```bash
+CFLAGS="-I$HOME/.local/include -L$HOME/.local/lib" pip install pharminv
+```
