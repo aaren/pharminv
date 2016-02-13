@@ -37,7 +37,7 @@ time = np.linspace(0, 1, 1000)
 
 signal = np.cos(2 * np.pi * time * 10) + np.cos(2 * np.pi * time * 20)
 
-inversion = harminv.invert(signal, fmin=1, fmax=100)
+inversion = harminv.invert(signal, fmin=1, fmax=100, dt=0.001)
 
 inversion.freq        # mode frequencies
 inversion.decay       # decay rates
