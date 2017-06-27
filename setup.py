@@ -39,7 +39,7 @@ if USE_CYTHON:
 
 setup(
     name='pharminv',
-    version="0.3",
+    version="0.4",
     description='Python interface to harminv',
     long_description=readme,
     packages=['harminv'],
