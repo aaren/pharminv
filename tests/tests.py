@@ -1,4 +1,4 @@
-from StringIO import StringIO
+from io import BytesIO
 
 import numpy as np
 import numpy.testing as nt
@@ -19,7 +19,7 @@ class ReferenceData(object):
     1.10893, -2.500241e-01, -13.9339, 0.000228962, 1.03671, 6.522260e-04
     """
 
-    refp = StringIO(cli_output)
+    refp = BytesIO(cli_output.encode())
 
     data = np.genfromtxt(refp, delimiter=',', names=True)
 

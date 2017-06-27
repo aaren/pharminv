@@ -1,6 +1,6 @@
 import numpy as np
 
-import charminv
+from . import charminv
 
 
 class Harminv(charminv.Harminv):
